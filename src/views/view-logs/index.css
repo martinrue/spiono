@@ -1,0 +1,137 @@
+header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 35px 10px 10px 10px;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .stat {
+  position: relative;
+  padding: 25px 20px 20px 20px;
+  margin: 10px 15px;
+  text-align: center;
+  background: #262626;
+  border-radius: 8px;
+}
+
+header .stat.activity {
+  padding: 40px 10px 10px 10px;
+}
+
+header .stat .icon {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 5px #262626;
+  background: #202020;
+}
+
+header .stat .icon.icon-hash {
+  background: #202020 url("../../images/hash.svg") no-repeat center/20px;
+}
+
+header .stat .icon.icon-clock {
+  background: #202020 url("../../images/clock.svg") no-repeat center/20px;
+}
+
+header .stat .icon.icon-activity {
+  background: #202020 url("../../images/activity.svg") no-repeat center/20px;
+}
+
+header .val {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+header .label {
+  margin-top: 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+header canvas {
+  width: 200px;
+}
+
+.logs {
+  padding: 20px;
+  margin-top: 220px;
+}
+
+.logs .log {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.logs .log div:first-child {
+  min-width: 200px;
+  margin-right: 10px;
+  text-align: right;
+  position: relative;
+}
+
+.logs .log div.hidden:first-child p {
+  visibility: hidden;
+}
+
+.logs .log div.hidden .link-bar {
+  position: absolute;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.logs .log p {
+  padding: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.logs .log p.ctx {
+  color: #fff;
+  display: inline-block;
+  min-width: 40px;
+  max-width: 180px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logs .log p.t {
+  padding: 10px 0 0 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.logs .log p.code {
+  font-family: "Courier", Courier, monospace;
+  white-space: nowrap;
+}
+
+.scroll-bottom-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #262626 url("../../images/arrow-down.svg") no-repeat center/20px;
+  cursor: pointer;
+  display: none;
+}

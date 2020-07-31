@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../shared.css">
+  <link rel="stylesheet" type="text/css" href="./index.css">
+
+  <title>Spiono</title>
+</head>
+
+<body>
+  <header>
+    <div class="stat">
+      <div class="icon icon-hash"></div>
+      <p id="total-events" class="val">0</p>
+      <p class="label">Total Events</p>
+    </div>
+
+    <div class="stat activity">
+      <div class="icon icon-activity"></div>
+      <canvas id="activity-chart"></canvas>
+    </div>
+
+    <div class="stat">
+      <div class="icon icon-clock"></div>
+      <p id="last-event" class="val">--</p>
+      <p class="label">Last Event</p>
+    </div>
+  </header>
+
+  <section class="logs">
+  </section>
+
+  <div class="scroll-bottom-button" />
+
+  <script>let exports = { "__esModule": true };</script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

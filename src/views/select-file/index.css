@@ -1,0 +1,42 @@
+html,
+body {
+  height: 100%;
+}
+
+.select-file {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  user-select: none;
+}
+
+.select-file .logo {
+  text-align: center;
+}
+
+.select-file .logo img {
+  width: 100px;
+}
+
+.select-file .button {
+  background: #2a2a2a url("../../images/file.svg") no-repeat 15px center/25px;
+  padding: 15px 20px 15px 50px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.select-file .button:hover {
+  background-color: #262626;
+}
+
+.select-file .footer {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 20px;
+  display: block;
+  color: #aaa;
+}
