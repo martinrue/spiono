@@ -57,7 +57,7 @@ onReady(() => {
   });
 
   const logFile: any = parse(global.location.search)["?logFile"];
-  const formatter = createEntryFormatter(60);
+  const formatter = createEntryFormatter(60 * 24);
 
   watchLogFile(logFile, formatter, onEntry, (err) => console.error(err));
 });
