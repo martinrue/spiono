@@ -1,4 +1,5 @@
 import { parse } from "querystring";
+import { ipcRenderer } from "electron";
 import { onReady, $ } from "../../helpers";
 import { watchLogFile, LogEntry } from "../../log-watcher";
 import { createEntryFormatter } from "../../entry-formatter";
@@ -42,6 +43,12 @@ const onEntry = (entry: LogEntry) => {
   state.chart.addToTimeSeries1m(entry);
   state.chart.renderChart();
 };
+
+ipcRenderer.on("clear-logs", () => {
+  $(".logs").innerHTML = "";
+  state.scrollLocked = false;
+  updateScrollButtonVisibility();
+});
 
 onReady(() => {
   state.chart.setDestination($("#activity-chart") as HTMLCanvasElement);

@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { app, ipcMain, BrowserWindow } from "electron";
+import { app, ipcMain, BrowserWindow, Menu } from "electron";
 
 let window: BrowserWindow | null = null;
 
@@ -36,6 +36,34 @@ const createWindow = (logFile?: string) => {
 
   showSelectLogWindow();
 };
+
+const menu = Menu.buildFromTemplate([
+  {
+    label: app.name,
+    submenu: [{ role: "about" }, { role: "quit" }],
+  },
+  {
+    label: "Window",
+    submenu: [
+      {
+        label: "Clear Logs",
+        accelerator: "CmdOrCtrl+K",
+        click: () => {
+          window!.webContents.send("clear-logs");
+        },
+      },
+      {
+        label: "Open DevTools",
+        accelerator: "CmdOrCtrl+Alt+I",
+        click: () => {
+          window!.webContents.openDevTools();
+        },
+      },
+    ],
+  },
+] as any);
+
+Menu.setApplicationMenu(menu);
 
 app.whenReady().then(() => {
   createWindow(app.commandLine.getSwitchValue("file"));
