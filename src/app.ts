@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { app, ipcMain, BrowserWindow, Menu } from "electron";
+import { app, dialog, ipcMain, BrowserWindow, Menu } from "electron";
 
 let window: BrowserWindow | null = null;
 
@@ -27,6 +27,7 @@ const createWindow = (logFile?: string) => {
     webPreferences: {
       scrollBounce: true,
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -85,4 +86,17 @@ app.on("activate", () => {
 
 ipcMain.on("render:view-logs", (_, arg) => {
   showLogViewerWindow(arg.logFile);
+});
+
+ipcMain.handle("select-log-file", async () => {
+  const paths = dialog.showOpenDialogSync({
+    properties: ["openFile"],
+    filters: [{ name: "Log Files", extensions: ["*.log"] }],
+  });
+
+  if (paths?.length !== 1) {
+    return null;
+  }
+
+  return paths[0];
 });

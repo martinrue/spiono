@@ -1,17 +1,12 @@
-import { ipcRenderer, remote } from "electron";
+import { ipcRenderer } from "electron";
 import { onReady, $ } from "../../helpers";
 
 onReady(() => {
-  $(".select-file .button")?.addEventListener("click", () => {
-    const paths = remote.dialog.showOpenDialogSync({
-      properties: ["openFile"],
-      filters: [{ name: "Log Files", extensions: ["*.log"] }],
-    });
+  $(".select-file .button")?.addEventListener("click", async () => {
+    const path = await ipcRenderer.invoke("select-log-file");
 
-    if (paths?.length !== 1) {
-      return;
+    if (path) {
+      ipcRenderer.send("render:view-logs", { logFile: path });
     }
-
-    ipcRenderer.send("render:view-logs", { logFile: paths[0] });
   });
 });
